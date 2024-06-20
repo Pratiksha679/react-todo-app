@@ -47,13 +47,9 @@ function CreateTodo() {
     }
 
     const deleteTodo = (index) => {
-        const tobeDeletedTitle = todosLocalStorage[index]['title'];
-        const newTodos = todosLocalStorage.filter((todo) => {
-            return todo.title != tobeDeletedTitle;
-        })
-        localStorage.setItem('todos', JSON.stringify(newTodos));
-        todosLocalStorage = newTodos;
-        setTodos(newTodos);
+        todosLocalStorage.splice(index, 1);
+        localStorage.setItem('todos', JSON.stringify(todosLocalStorage));
+        setTodos(todosLocalStorage);
         swal("Success", "Todo deleted successfully", "success")
     }
 
